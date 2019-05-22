@@ -1,7 +1,9 @@
 package rulett2k190521;
 
+import Player.RandomColorPlayer;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
@@ -19,19 +21,21 @@ public class Casino {
         this.board = new Board();
         this.possibleBets = new ArrayList<>();
         fillPossibleBets();
-        
-        for (int i = 0; i < possibleBets.size(); i++) {
-            
-        System.out.println(possibleBets.get(i));
-        }
-        
-        
     }
     
-    private double prizes(BetType bt){
-        //TODO;
-        return -1;
+    public void game() {
+        RandomColorPlayer rcp = new RandomColorPlayer(possibleBets);
+        Bet placeTakes = rcp.placeTakes();
+        int randomNumber = spin();
+        HashSet<BetType> winningBets = board.getWinningBets(randomNumber);
+        if (winningBets.contains(placeTakes.getWhere())) {
+            double prize = Prize.prize(placeTakes.getWhere());
+            rcp.recievePrize((int)(prize * rcp.placeTakes().getStake()));
+        }
+        
     }
+
+    
     
     private int spin(){
         return (int)(Math.random()*37);
