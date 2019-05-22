@@ -15,7 +15,7 @@ public class Casino {
     private Board board;
     private List<BetType> possibleBets;
 
-    public Casino(Board board, List<BetType> possibleBets) {
+    public Casino() {
         this.board = new Board();
         this.possibleBets = new ArrayList<>();
         fillPossibleBets();
@@ -26,6 +26,15 @@ public class Casino {
         }
         
         
+    }
+    
+    private double prizes(BetType bt){
+        //TODO;
+        return -1;
+    }
+    
+    private int spin(){
+        return (int)(Math.random()*37);
     }
     
     private void fillPossibleBets(){
@@ -181,8 +190,8 @@ public class Casino {
         possibleBets.add(BetType.COLUMN_03);
         possibleBets.add(BetType.NUM_ODDS);
         possibleBets.add(BetType.NUM_EVEN);
-        possibleBets.add(BetType.COLOUR_RED);
-        possibleBets.add(BetType.COLOUR_BLACK);
+        possibleBets.add(BetType.CLR_RED);
+        possibleBets.add(BetType.CLR_BLACK);
                 
     }
     

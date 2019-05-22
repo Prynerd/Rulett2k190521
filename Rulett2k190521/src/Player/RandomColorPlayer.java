@@ -17,7 +17,7 @@ public class RandomColorPlayer extends AbstractPlayer {
     }
 
     @Override
-    protected void strategy() {
+    protected BetType strategy() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

@@ -16,7 +16,7 @@ public abstract class AbstractPlayer {
         this.possibleBets = possibleBets;
     }
     
-    protected abstract void strategy();
+    protected abstract BetType strategy();
     
     protected abstract Bet placeTakes();
     
