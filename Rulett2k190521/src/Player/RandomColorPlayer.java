@@ -1,7 +1,9 @@
 package Player;
 
+import java.util.List;
 import rulett2k190521.AbstractPlayer;
 import rulett2k190521.Bet;
+import rulett2k190521.BetType;
 
 /**
  *
@@ -9,11 +11,10 @@ import rulett2k190521.Bet;
  */
 public class RandomColorPlayer extends AbstractPlayer {
 
-    public RandomColorPlayer() {
+    public RandomColorPlayer(List<BetType> possibleBets) {
+        super(possibleBets);
         this.money = 1000;
     }
-    
-    
 
     @Override
     protected void strategy() {
