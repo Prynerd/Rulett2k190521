@@ -1,6 +1,8 @@
 package rulett2k190521;
 
+import Player.FullRandomPlayer;
 import Player.RandomColorPlayer;
+import Player.ShyPlayer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -12,8 +14,8 @@ import java.util.Map;
  * @author progmatic
  */
 public class Casino {
-    
-    private Map<AbstractPlayer, Bet> BetOfPlayers =  new HashMap<>();
+
+    private AbstractPlayer player;
     private Board board;
     private List<BetType> possibleBets;
 
@@ -22,26 +24,48 @@ public class Casino {
         this.possibleBets = new ArrayList<>();
         fillPossibleBets();
     }
-    
-    public void game() {
-        RandomColorPlayer rcp = new RandomColorPlayer(possibleBets);
-        Bet placeTakes = rcp.placeTakes();
+
+    public void game(int rounds) {
+        if (rounds < 0) {
+            simulation();
+        } else {
+            for (int i = 0; i < rounds; i++) {
+                simulation();
+            }
+        }
+    }
+
+    public void newPlayer(int playerNumber, int minBet, int maxBet, int money) {
+        switch (playerNumber) {
+            case 1:
+                this.player = new RandomColorPlayer(possibleBets, minBet, maxBet, money);
+                break;
+            case 2:
+                this.player = new FullRandomPlayer(possibleBets, minBet, maxBet, money);
+                break;
+            case 3:
+                this.player = new ShyPlayer(possibleBets, minBet, maxBet, money);
+                break;
+        }
+    }
+
+    private void simulation() {
+        Bet placeTakes = player.placeTakes();
         int randomNumber = spin();
         HashSet<BetType> winningBets = board.getWinningBets(randomNumber);
         if (winningBets.contains(placeTakes.getWhere())) {
             double prize = Prize.prize(placeTakes.getWhere());
-            rcp.recievePrize((int)(prize * rcp.placeTakes().getStake()));
+            player.recievePrize((int) (prize * player.placeTakes().getStake()));
+        } else {
+            player.recievePrize(0);
         }
-        
     }
 
-    
-    
-    private int spin(){
-        return (int)(Math.random()*37);
+    private int spin() {
+        return (int) (Math.random() * 37);
     }
-    
-    private void fillPossibleBets(){
+
+    private void fillPossibleBets() {
         possibleBets.add(BetType.SINGLE_00);
         possibleBets.add(BetType.SINGLE_01);
         possibleBets.add(BetType.SINGLE_02);
@@ -196,9 +220,6 @@ public class Casino {
         possibleBets.add(BetType.NUM_EVEN);
         possibleBets.add(BetType.CLR_RED);
         possibleBets.add(BetType.CLR_BLACK);
-                
     }
-    
-    
-    
+
 }
