@@ -28,6 +28,7 @@ public class RandomColorPlayer extends AbstractPlayer {
     public Bet placeTakes() {
         int money = (int) (Math.random() * (150) + 50);
         Bet newBet = new Bet(strategy(), money);
+        this.money -= money;
         return newBet;
     }
 
