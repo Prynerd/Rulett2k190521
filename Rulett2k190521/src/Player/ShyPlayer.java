@@ -19,6 +19,7 @@ public class ShyPlayer extends AbstractPlayer {
     public ShyPlayer(List<BetType> possibleBets, int minBet, int maxBet, int money) {
         super(possibleBets, minBet, maxBet, money);
     }
+    
 
     @Override
     protected BetType strategy() {
@@ -26,7 +27,7 @@ public class ShyPlayer extends AbstractPlayer {
     }
 
     @Override
-    protected Bet placeTakes() {
+    public Bet placeTakes() {
         Bet newBet = new Bet(strategy(), minBet);
         this.money -= minBet;
         return newBet;

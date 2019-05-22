@@ -6,7 +6,6 @@
 package Player;
 
 import java.util.List;
-import java.util.Random;
 import rulett2k190521.AbstractPlayer;
 import rulett2k190521.Bet;
 import rulett2k190521.BetType;
@@ -15,23 +14,32 @@ import rulett2k190521.BetType;
  *
  * @author N007
  */
-public class FullRandomPlayer extends AbstractPlayer {
+public class Martingel extends AbstractPlayer {
 
-    public FullRandomPlayer(List<BetType> possibleBets, int minBet, int maxBet, int money) {
+    int previousBet;
+    boolean isWonBefore;
+
+    public Martingel(List<BetType> possibleBets, int minBet, int maxBet, int money) {
         super(possibleBets, minBet, maxBet, money);
+        this.previousBet = minBet;
+        this.isWonBefore = false;
     }
 
     @Override
     protected BetType strategy() {
-        int pick = new Random().nextInt(BetType.values().length);
-        return BetType.values()[pick];
+        return BetType.CLR_RED;
     }
 
     @Override
     public Bet placeTakes() {
-       int bettingMoney = (int) (Math.random() * (maxBet-minBet+1) + minBet);
-        Bet newBet = new Bet(strategy(),bettingMoney);
+        if (isWonBefore) {
+            Bet dontWantToPlay = new Bet(null, 0);
+            return dontWantToPlay;
+        }
+        int bettingMoney = previousBet * 2;
+        Bet newBet = new Bet(strategy(), bettingMoney);
         this.money -= bettingMoney;
+        this.previousBet += bettingMoney;
         return newBet;
     }
 
