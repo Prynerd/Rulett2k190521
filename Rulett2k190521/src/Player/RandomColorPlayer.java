@@ -1,6 +1,7 @@
 package Player;
 
 import java.util.List;
+import java.util.Random;
 import rulett2k190521.AbstractPlayer;
 import rulett2k190521.Bet;
 import rulett2k190521.BetType;
@@ -11,19 +12,23 @@ import rulett2k190521.BetType;
  */
 public class RandomColorPlayer extends AbstractPlayer {
 
-    public RandomColorPlayer(List<BetType> possibleBets) {
-        super(possibleBets);
-        this.money = 1000;
+    public RandomColorPlayer(List<BetType> possibleBets, int minBet, int maxBet, int money) {
+        super(possibleBets, minBet, maxBet, money);
     }
 
     @Override
-    protected void strategy() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    protected BetType strategy() {
+        Random random = new Random();
+        int strategy = random.nextInt(2) + 1;
+        return (strategy == 1 ? BetType.CLR_BLACK : BetType.CLR_RED);
     }
 
     @Override
-    protected Bet placeTakes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Bet placeTakes() {
+        int bettingBoney = (int) (Math.random() * (maxBet-minBet+1) + minBet);
+        Bet newBet = new Bet(strategy(), bettingBoney);
+        this.money -= bettingBoney;
+        return newBet;
     }
 
 }
