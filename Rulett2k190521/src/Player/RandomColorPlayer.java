@@ -12,9 +12,8 @@ import rulett2k190521.BetType;
  */
 public class RandomColorPlayer extends AbstractPlayer {
 
-    public RandomColorPlayer(List<BetType> possibleBets) {
-        super(possibleBets);
-        this.money = 1000;
+    public RandomColorPlayer(List<BetType> possibleBets, int minBet, int maxBet, int money) {
+        super(possibleBets, minBet, maxBet, money);
     }
 
     @Override
@@ -26,9 +25,9 @@ public class RandomColorPlayer extends AbstractPlayer {
 
     @Override
     public Bet placeTakes() {
-        int money = (int) (Math.random() * (150) + 50);
-        Bet newBet = new Bet(strategy(), money);
-        this.money -= money;
+        int playerMoney = (int) (Math.random() * (maxBet-minBet+1) + minBet);
+        Bet newBet = new Bet(strategy(), playerMoney);
+        this.money -= playerMoney;
         return newBet;
     }
 

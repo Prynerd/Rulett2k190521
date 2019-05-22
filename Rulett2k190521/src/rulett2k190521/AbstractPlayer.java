@@ -11,9 +11,14 @@ public abstract class AbstractPlayer {
     protected final List<BetType> possibleBets;
     
     protected int money;
+    protected int minBet;
+    protected int maxBet;
 
-    public AbstractPlayer(List<BetType> possibleBets) {
+    public AbstractPlayer(List<BetType> possibleBets, int minBet, int maxBet, int money) {
         this.possibleBets = possibleBets;
+        this.maxBet = maxBet;
+        this.minBet = minBet;
+        this.money = money;
     }
     
     protected abstract BetType strategy();
