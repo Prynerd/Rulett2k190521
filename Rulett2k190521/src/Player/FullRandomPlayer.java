@@ -29,9 +29,9 @@ public class FullRandomPlayer extends AbstractPlayer {
 
     @Override
     protected Bet placeTakes() {
-        int playerMoney = (int) (Math.random() * (150) + 50);
-        Bet newBet = new Bet(strategy(), money);
-        this.money -= playerMoney;
+       int bettingMoney = (int) (Math.random() * (maxBet-minBet+1) + minBet);
+        Bet newBet = new Bet(strategy(),bettingMoney);
+        this.money -= bettingMoney;
         return newBet;
     }
 

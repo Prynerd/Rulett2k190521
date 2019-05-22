@@ -27,8 +27,8 @@ public class ShyPlayer extends AbstractPlayer {
 
     @Override
     protected Bet placeTakes() {
-        Bet newBet = new Bet(strategy(), 50);
-        this.money -= 50;
+        Bet newBet = new Bet(strategy(), minBet);
+        this.money -= minBet;
         return newBet;
     }
 
