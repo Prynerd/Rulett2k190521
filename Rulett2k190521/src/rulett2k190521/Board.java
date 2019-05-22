@@ -1,22 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package rulett2k190521;
 
 import java.util.*;
 
-/**
- *
- * @author imaginifer
- */
 public class Board {
 
     private final ArrayList<HashSet<BetType>> table;
 
-    //ez tartja nyilván, hogy 0-36 indexei reprezentálta rulettszámok
-    // milyen fogadás esetén nyerőek
+    //Ez tartja nyilván, hogy a table lista 0-36 indexei reprezentálta rulettszámok milyen fogadás esetén nyerők
     public Board() {
         table = new ArrayList<>();
 
@@ -119,7 +109,7 @@ public class Board {
             BetType.COLUMN_03, BetType.NUM_EVEN, BetType.CLR_RED,
             BetType.HALF_01_18, BetType.THIRD_01_12};
         table.add(new HashSet(Arrays.asList(nr12)));
-        
+
         //13
         BetType[] nr13 = {BetType.SINGLE_13, BetType.SPLIT_10_13, BetType.SPLIT_13_14, BetType.SPLIT_13_16,
             BetType.CORNER_13_17, BetType.CORNER_10_14,
@@ -127,7 +117,7 @@ public class Board {
             BetType.COLUMN_01, BetType.NUM_ODDS, BetType.CLR_BLACK,
             BetType.HALF_01_18, BetType.THIRD_13_24};
         table.add(new HashSet(Arrays.asList(nr13)));
-        
+
         //14
         BetType[] nr14 = {BetType.SINGLE_14, BetType.SPLIT_11_14, BetType.SPLIT_13_14, BetType.SPLIT_14_15, BetType.SPLIT_14_17,
             BetType.CORNER_11_15, BetType.CORNER_13_17, BetType.CORNER_14_18,
@@ -135,7 +125,7 @@ public class Board {
             BetType.COLUMN_02, BetType.NUM_EVEN, BetType.CLR_RED,
             BetType.HALF_01_18, BetType.THIRD_13_24};
         table.add(new HashSet(Arrays.asList(nr14)));
-        
+
         //15
         BetType[] nr15 = {BetType.SINGLE_15, BetType.SPLIT_12_15, BetType.SPLIT_14_15, BetType.SPLIT_15_18,
             BetType.CORNER_11_15, BetType.CORNER_14_18,
@@ -143,7 +133,7 @@ public class Board {
             BetType.COLUMN_03, BetType.NUM_ODDS, BetType.CLR_BLACK,
             BetType.HALF_01_18, BetType.THIRD_13_24};
         table.add(new HashSet(Arrays.asList(nr15)));
-        
+
         //16
         BetType[] nr16 = {BetType.SINGLE_16, BetType.SPLIT_13_16, BetType.SPLIT_16_17, BetType.SPLIT_16_19,
             BetType.CORNER_13_17, BetType.CORNER_16_20,
@@ -151,7 +141,7 @@ public class Board {
             BetType.COLUMN_01, BetType.NUM_EVEN, BetType.CLR_RED,
             BetType.HALF_01_18, BetType.THIRD_13_24};
         table.add(new HashSet(Arrays.asList(nr16)));
-        
+
         //17
         BetType[] nr17 = {BetType.SINGLE_17, BetType.SPLIT_14_17, BetType.SPLIT_16_17, BetType.SPLIT_17_18, BetType.SPLIT_17_20,
             BetType.CORNER_16_20, BetType.CORNER_13_17, BetType.CORNER_14_18,
@@ -159,7 +149,7 @@ public class Board {
             BetType.COLUMN_02, BetType.NUM_ODDS, BetType.CLR_BLACK,
             BetType.HALF_01_18, BetType.THIRD_13_24};
         table.add(new HashSet(Arrays.asList(nr17)));
-        
+
         //18
         BetType[] nr18 = {BetType.SINGLE_18, BetType.SPLIT_15_18, BetType.SPLIT_17_18, BetType.SPLIT_18_21,
             BetType.CORNER_14_18, BetType.CORNER_17_21,
@@ -167,7 +157,7 @@ public class Board {
             BetType.COLUMN_03, BetType.NUM_EVEN, BetType.CLR_RED,
             BetType.HALF_01_18, BetType.THIRD_13_24};
         table.add(new HashSet(Arrays.asList(nr18)));
-        
+
         //19
         BetType[] nr19 = {BetType.SINGLE_19, BetType.SPLIT_16_19, BetType.SPLIT_19_20, BetType.SPLIT_19_22,
             BetType.CORNER_16_20, BetType.CORNER_19_23,
@@ -175,7 +165,7 @@ public class Board {
             BetType.COLUMN_01, BetType.NUM_ODDS, BetType.CLR_RED,
             BetType.HALF_19_36, BetType.THIRD_13_24};
         table.add(new HashSet(Arrays.asList(nr19)));
-        
+
         //20
         BetType[] nr20 = {BetType.SINGLE_20, BetType.SPLIT_19_20, BetType.SPLIT_20_21, BetType.SPLIT_20_23, BetType.SPLIT_17_20,
             BetType.CORNER_16_20, BetType.CORNER_17_21, BetType.CORNER_19_23,
@@ -183,7 +173,7 @@ public class Board {
             BetType.COLUMN_02, BetType.NUM_EVEN, BetType.CLR_BLACK,
             BetType.HALF_19_36, BetType.THIRD_13_24};
         table.add(new HashSet(Arrays.asList(nr20)));
-        
+
         //21
         BetType[] nr21 = {BetType.SINGLE_21, BetType.SPLIT_18_21, BetType.SPLIT_20_21, BetType.SPLIT_21_24,
             BetType.CORNER_20_24, BetType.CORNER_17_21,
@@ -191,7 +181,7 @@ public class Board {
             BetType.COLUMN_03, BetType.NUM_ODDS, BetType.CLR_RED,
             BetType.HALF_19_36, BetType.THIRD_13_24};
         table.add(new HashSet(Arrays.asList(nr21)));
-        
+
         //22
         BetType[] nr22 = {BetType.SINGLE_22, BetType.SPLIT_19_22, BetType.SPLIT_22_23, BetType.SPLIT_22_25,
             BetType.CORNER_22_26, BetType.CORNER_19_23,
@@ -199,7 +189,7 @@ public class Board {
             BetType.COLUMN_01, BetType.NUM_EVEN, BetType.CLR_BLACK,
             BetType.HALF_19_36, BetType.THIRD_13_24};
         table.add(new HashSet(Arrays.asList(nr22)));
-        
+
         //23
         BetType[] nr23 = {BetType.SINGLE_23, BetType.SPLIT_20_23, BetType.SPLIT_22_23, BetType.SPLIT_23_24, BetType.SPLIT_23_26,
             BetType.CORNER_22_26, BetType.CORNER_23_27, BetType.CORNER_19_23,
@@ -207,7 +197,7 @@ public class Board {
             BetType.COLUMN_02, BetType.NUM_ODDS, BetType.CLR_RED,
             BetType.HALF_19_36, BetType.THIRD_13_24};
         table.add(new HashSet(Arrays.asList(nr23)));
-        
+
         //24
         BetType[] nr24 = {BetType.SINGLE_24, BetType.SPLIT_21_24, BetType.SPLIT_23_24, BetType.SPLIT_24_27,
             BetType.CORNER_20_24, BetType.CORNER_23_27,
@@ -215,6 +205,98 @@ public class Board {
             BetType.COLUMN_03, BetType.NUM_EVEN, BetType.CLR_BLACK,
             BetType.HALF_19_36, BetType.THIRD_13_24};
         table.add(new HashSet(Arrays.asList(nr24)));
+
+        //25
+        BetType[] nr25 = {BetType.SINGLE_25, BetType.SPLIT_22_25, BetType.SPLIT_25_26, BetType.SPLIT_25_28,
+            BetType.CORNER_22_26, BetType.CORNER_25_29,
+            BetType.STREET_25, BetType.SIX_LINE_25, BetType.SIX_LINE_22,
+            BetType.COLUMN_01, BetType.NUM_ODDS, BetType.CLR_RED,
+            BetType.HALF_19_36, BetType.THIRD_25_36};
+        table.add(new HashSet(Arrays.asList(nr25)));
+
+        //26
+        BetType[] nr26 = {BetType.SINGLE_26, BetType.SPLIT_23_26, BetType.SPLIT_25_26, BetType.SPLIT_26_29, BetType.SPLIT_26_27,
+            BetType.CORNER_22_26, BetType.CORNER_23_27, BetType.CORNER_25_29,
+            BetType.CORNER_26_30, BetType.STREET_25, BetType.SIX_LINE_25, BetType.SIX_LINE_22,
+            BetType.COLUMN_02, BetType.NUM_EVEN, BetType.CLR_BLACK,
+            BetType.HALF_19_36, BetType.THIRD_25_36};
+        table.add(new HashSet(Arrays.asList(nr26)));
+
+        //27
+        BetType[] nr27 = {BetType.SINGLE_27, BetType.SPLIT_24_27, BetType.SPLIT_26_27, BetType.SPLIT_27_30,
+            BetType.CORNER_23_27, BetType.CORNER_26_30,
+            BetType.STREET_25, BetType.SIX_LINE_22, BetType.SIX_LINE_25,
+            BetType.COLUMN_03, BetType.NUM_ODDS, BetType.CLR_RED,
+            BetType.HALF_19_36, BetType.THIRD_25_36};
+        table.add(new HashSet(Arrays.asList(nr27)));
+
+        //28
+        BetType[] nr28 = {BetType.SINGLE_28, BetType.SPLIT_28_29, BetType.SPLIT_28_31, BetType.SPLIT_25_28,
+            BetType.CORNER_28_32, BetType.CORNER_25_29,
+            BetType.STREET_28, BetType.SIX_LINE_25, BetType.SIX_LINE_28,
+            BetType.COLUMN_01, BetType.NUM_EVEN, BetType.CLR_BLACK,
+            BetType.HALF_19_36, BetType.THIRD_25_36};
+        table.add(new HashSet(Arrays.asList(nr28)));
+
+        //29
+        BetType[] nr29 = {BetType.SINGLE_29, BetType.SPLIT_28_29, BetType.SPLIT_29_30, BetType.SPLIT_26_29, BetType.SPLIT_29_32,
+            BetType.CORNER_28_32, BetType.CORNER_29_33, BetType.CORNER_25_29,
+            BetType.CORNER_26_30, BetType.STREET_28, BetType.SIX_LINE_25, BetType.SIX_LINE_28,
+            BetType.COLUMN_02, BetType.NUM_ODDS, BetType.CLR_BLACK,
+            BetType.HALF_19_36, BetType.THIRD_25_36};
+        table.add(new HashSet(Arrays.asList(nr29)));
+
+        //30
+        BetType[] nr30 = {BetType.SINGLE_30, BetType.SPLIT_29_30, BetType.SPLIT_30_33, BetType.SPLIT_27_30,
+            BetType.CORNER_29_33, BetType.CORNER_26_30,
+            BetType.STREET_28, BetType.SIX_LINE_28, BetType.SIX_LINE_25,
+            BetType.COLUMN_03, BetType.NUM_EVEN, BetType.CLR_RED,
+            BetType.HALF_19_36, BetType.THIRD_25_36};
+        table.add(new HashSet(Arrays.asList(nr30)));
+
+        //31
+        BetType[] nr31 = {BetType.SINGLE_31, BetType.SPLIT_31_32, BetType.SPLIT_28_31, BetType.SPLIT_31_34,
+            BetType.CORNER_28_32, BetType.CORNER_31_35,
+            BetType.STREET_31, BetType.SIX_LINE_31, BetType.SIX_LINE_28,
+            BetType.COLUMN_01, BetType.NUM_ODDS, BetType.CLR_BLACK,
+            BetType.HALF_19_36, BetType.THIRD_25_36};
+        table.add(new HashSet(Arrays.asList(nr31)));
+
+        //32
+        BetType[] nr32 = {BetType.SINGLE_32, BetType.SPLIT_31_32, BetType.SPLIT_32_33, BetType.SPLIT_26_29, BetType.SPLIT_32_35,
+            BetType.CORNER_28_32, BetType.CORNER_29_33, BetType.CORNER_31_35,
+            BetType.CORNER_32_36, BetType.STREET_31, BetType.SIX_LINE_31, BetType.SIX_LINE_28,
+            BetType.COLUMN_02, BetType.NUM_EVEN, BetType.CLR_RED,
+            BetType.HALF_19_36, BetType.THIRD_25_36};
+        table.add(new HashSet(Arrays.asList(nr32)));
+
+        //33
+        BetType[] nr33 = {BetType.SINGLE_33, BetType.SPLIT_32_33, BetType.SPLIT_30_33, BetType.SPLIT_33_36,
+            BetType.CORNER_29_33, BetType.CORNER_32_36,
+            BetType.STREET_31, BetType.SIX_LINE_28, BetType.SIX_LINE_31,
+            BetType.COLUMN_03, BetType.NUM_ODDS, BetType.CLR_BLACK,
+            BetType.HALF_19_36, BetType.THIRD_25_36};
+        table.add(new HashSet(Arrays.asList(nr33)));
+
+        //34
+        BetType[] nr34 = {BetType.SINGLE_34, BetType.SPLIT_34_35, BetType.SPLIT_31_34,
+            BetType.CORNER_31_35, BetType.STREET_34, BetType.SIX_LINE_31,
+            BetType.COLUMN_01, BetType.NUM_EVEN, BetType.CLR_RED,
+            BetType.HALF_19_36, BetType.THIRD_25_36};
+        table.add(new HashSet(Arrays.asList(nr34)));
+
+        //35
+        BetType[] nr35 = {BetType.SINGLE_35, BetType.SPLIT_34_35, BetType.SPLIT_35_36, BetType.SPLIT_32_35,
+            BetType.CORNER_31_35, BetType.CORNER_32_36, BetType.STREET_34, BetType.SIX_LINE_31,
+            BetType.COLUMN_02, BetType.NUM_ODDS, BetType.CLR_BLACK, BetType.HALF_19_36, BetType.THIRD_25_36};
+        table.add(new HashSet(Arrays.asList(nr35)));
+
+        //36
+        BetType[] nr36 = {BetType.SINGLE_36, BetType.SPLIT_35_36, BetType.SPLIT_33_36, BetType.CORNER_32_36,
+            BetType.STREET_34, BetType.SIX_LINE_31,
+            BetType.COLUMN_03, BetType.NUM_EVEN, BetType.CLR_BLACK,
+            BetType.HALF_19_36, BetType.THIRD_25_36};
+        table.add(new HashSet(Arrays.asList(nr36)));
     }
 
     public HashSet<BetType> getWinningBets(int nrSpun) {
