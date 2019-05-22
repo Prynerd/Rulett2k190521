@@ -6,11 +6,11 @@ package rulett2k190521;
  */
 public abstract class AbstractPlayer {
     
-    private int money;
+    protected int money;
     
-    abstract void strategy();
+    protected abstract void strategy();
     
-    abstract Bet placeTakes();
+    protected abstract Bet placeTakes();
     
     public void recievePrize(int prize){
       this.money += prize;  
