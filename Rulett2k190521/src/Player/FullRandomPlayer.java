@@ -29,9 +29,13 @@ public class FullRandomPlayer extends AbstractPlayer {
 
     @Override
     public Bet placeTakes() {
-       int bettingMoney = (int) (Math.random() * (maxBet-minBet+1) + minBet);
+        int bettingMoney = 0;
+        if (money < maxBet){
+            bettingMoney = (int) (Math.random() * (money-minBet+1) + minBet);
+        } else {
+            bettingMoney = (int) (Math.random() * (maxBet-minBet+1) + minBet);
+        }
         Bet newBet = new Bet(strategy(),bettingMoney);
-        this.money -= bettingMoney;
         return newBet;
     }
 

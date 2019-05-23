@@ -29,7 +29,7 @@ public class Casino {
 
     public void game(int rounds) {
         for (int i = 0; i < rounds; i++) {
-            System.out.println(i + ". játék.");
+            System.out.println((i+1) + ". játék.");
             if (!simulation()) {
                 break;
             }
@@ -62,8 +62,9 @@ public class Casino {
             player.recievePrize((int) (prize * player.placeTakes().getStake()));
             System.out.println("A játékos nyereménye:  " + (int) (prize * player.placeTakes().getStake()));
         } else {
-            player.recievePrize(0);
+            player.recievePrize(-(placeTakes.getStake()));
             System.out.println("Nem nyert.");
+            
         }
         return true;
     }

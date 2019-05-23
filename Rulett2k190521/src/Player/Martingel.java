@@ -26,7 +26,7 @@ public class Martingel extends AbstractPlayer {
         this.previousBet = minBet;
         this.isWonBefore = false;
         this.isFirstPlay = true;
-        this.previousMoney = minBet;
+        this.previousMoney = money;
     }
 
     @Override
@@ -56,8 +56,7 @@ public class Martingel extends AbstractPlayer {
             bettingMoney = maxBet;
         }
         Bet newBet = new Bet(strategy(), bettingMoney);
-        this.money -= bettingMoney;
-        this.previousMoney = this.money;
+        this.previousMoney = this.money - bettingMoney;
         this.previousBet = bettingMoney;
         return newBet;
     }

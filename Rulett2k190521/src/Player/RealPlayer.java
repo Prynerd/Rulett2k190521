@@ -24,7 +24,6 @@ public class RealPlayer extends AbstractPlayer{
 
     @Override
     public Bet placeTakes() {
-    this.money -= bet.getStake();
     return bet;    
     }
 
