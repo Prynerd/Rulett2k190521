@@ -47,6 +47,9 @@ public class Martingel extends AbstractPlayer {
             return firstBet;
         }
         int bettingMoney = previousBet * 2;
+        if (bettingMoney > maxBet) {
+            bettingMoney = maxBet;
+        }
         Bet newBet = new Bet(strategy(), bettingMoney);
         this.money -= bettingMoney;
         this.previousBet = bettingMoney;
