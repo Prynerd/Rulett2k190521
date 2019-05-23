@@ -290,6 +290,8 @@ public class UserInterface {
                 if (nr < 0) {
                     System.out.println("Ez a szám sajnos túl kicsi!");
                     correct = false;
+                }else{
+                    correct=true;
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Sajnos mindenképpen meg kell adnia egy számot!");

@@ -20,7 +20,6 @@ public class Casino {
     private Board board;
     private List<BetType> possibleBets;
     private Bet realPlayerBet;
-    
 
     public Casino() {
         this.board = new Board();
@@ -35,20 +34,23 @@ public class Casino {
         }
     }
 
-
-    
-    public void realPlayer(BetType bt, int nbr){
+    public void realPlayer(BetType bt, int nbr) {
         this.realPlayerBet = new Bet(bt, nbr);
     }
-    
-    public RealPlayer getRealPlayer(){
-        return (RealPlayer)this.player;
+
+    public RealPlayer getRealPlayer() {
+        return (RealPlayer) this.player;
     }
 
     //realPlayernek simulation
     public void simulation() {
         Bet placeTakes = player.placeTakes();
-        System.out.println("A játékos erre rakott: " + placeTakes.getWhere());
+        if (placeTakes.getStake() > player.money) {
+            System.out.println("Nincs elegendő pénze ekkora téthez.");
+            player.recievePrize(0);
+            return;
+        }
+        System.out.println("A játékos erre rakott: " + placeTakes.getWhere() + " Ennyit: " + placeTakes.getStake());
         int randomNumber = spin();
         System.out.println("A nyerő szám: " + randomNumber);
         HashSet<BetType> winningBets = board.getWinningBets(randomNumber);
@@ -61,7 +63,7 @@ public class Casino {
             System.out.println("Nem nyert.");
         }
     }
-    
+
     public void newPlayer(int playerNumber, int minBet, int maxBet, int money) {
         switch (playerNumber) {
             case 1:
@@ -78,8 +80,8 @@ public class Casino {
                 break;
         }
     }
-    
-    public void newPlayer(int money){
+
+    public void newPlayer(int money) {
         this.player = new RealPlayer(null, 0, 0, money);
     }
 
