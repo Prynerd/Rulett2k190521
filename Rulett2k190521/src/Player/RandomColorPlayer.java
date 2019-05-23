@@ -25,9 +25,9 @@ public class RandomColorPlayer extends AbstractPlayer {
 
     @Override
     public Bet placeTakes() {
-        int bettingBoney = (int) (Math.random() * (maxBet-minBet+1) + minBet);
-        Bet newBet = new Bet(strategy(), bettingBoney);
-        this.money -= bettingBoney;
+        int bettingMoney = (int) (Math.random() * (maxBet-minBet+1) + minBet);
+        Bet newBet = new Bet(strategy(), bettingMoney);
+        this.money -= bettingMoney;
         return newBet;
     }
 

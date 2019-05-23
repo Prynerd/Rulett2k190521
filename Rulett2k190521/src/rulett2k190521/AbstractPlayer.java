@@ -23,7 +23,7 @@ public abstract class AbstractPlayer {
     
     protected abstract BetType strategy();
     
-    protected abstract Bet placeTakes();
+    public abstract Bet placeTakes();
     
     public void recievePrize(int prize){
       this.money += prize;  
