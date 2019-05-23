@@ -19,7 +19,7 @@ public class Casino {
     private AbstractPlayer player;
     private Board board;
     private List<BetType> possibleBets;
-    private Bet realPlayerBet;
+    
 
     public Casino() {
         this.board = new Board();
@@ -33,19 +33,19 @@ public class Casino {
             simulation();
         }
     }
-
-    public void realPlayer(BetType bt, int nbr) {
-        this.realPlayerBet = new Bet(bt, nbr);
-    }
-
-    public RealPlayer getRealPlayer() {
-        return (RealPlayer) this.player;
+    
+    public RealPlayer getRealPlayer(){
+        return (RealPlayer)this.player;
     }
 
     //realPlayernek simulation
     public void simulation() {
         Bet placeTakes = player.placeTakes();
-        if (placeTakes.getStake() > player.money) {
+        if (placeTakes.getStake() == -1) {
+            System.out.println("Martingél abbahagyta a játékot.");
+            return;
+        }
+        if(placeTakes.getStake() > player.money) {
             System.out.println("Nincs elegendő pénze ekkora téthez.");
             player.recievePrize(0);
             return;

@@ -35,7 +35,7 @@ public class Martingel extends AbstractPlayer {
     @Override
     public Bet placeTakes() {
         if (isWonBefore) {
-            Bet dontWantToPlay = new Bet(null, 0);
+            Bet dontWantToPlay = new Bet(null, -1);
             return dontWantToPlay;
         }
         if (isFirstPlay) {
