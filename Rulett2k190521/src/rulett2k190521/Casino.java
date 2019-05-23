@@ -44,10 +44,6 @@ public class Casino {
     public boolean simulation() {
         System.out.println("A játékos beszállt " + player.money + " zsetonnal.");
         Bet placeTakes = player.placeTakes();
-        if (placeTakes.getStake() == -1) {
-            System.out.println("Martingél abbahagyta a játékot.");
-            return false;
-        }
         if(placeTakes.getStake() > player.money) {
             System.out.println("Nincs elegendő pénze ekkora téthez.");
             player.recievePrize(0);
