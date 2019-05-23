@@ -19,12 +19,14 @@ public class Martingel extends AbstractPlayer {
     int previousBet;
     boolean isWonBefore;
     boolean isFirstPlay;
+    int previousMoney;
 
     public Martingel(List<BetType> possibleBets, int minBet, int maxBet, int money) {
         super(possibleBets, minBet, maxBet, money);
         this.previousBet = minBet;
         this.isWonBefore = false;
         this.isFirstPlay = true;
+        this.previousMoney = minBet;
     }
 
     @Override
@@ -34,6 +36,9 @@ public class Martingel extends AbstractPlayer {
 
     @Override
     public Bet placeTakes() {
+        if (this.previousMoney < this.money) {
+            isWonBefore = true;
+        }
         if (isWonBefore) {
             Bet dontWantToPlay = new Bet(null, -1);
             return dontWantToPlay;
@@ -47,8 +52,12 @@ public class Martingel extends AbstractPlayer {
             return firstBet;
         }
         int bettingMoney = previousBet * 2;
+        if (bettingMoney > maxBet) {
+            bettingMoney = maxBet;
+        }
         Bet newBet = new Bet(strategy(), bettingMoney);
         this.money -= bettingMoney;
+        this.previousMoney = this.money;
         this.previousBet = bettingMoney;
         return newBet;
     }
