@@ -59,8 +59,8 @@ public class Casino {
         HashSet<BetType> winningBets = board.getWinningBets(randomNumber);
         if (winningBets.contains(placeTakes.getWhere())) {
             double prize = Prize.prize(placeTakes.getWhere());
-            player.recievePrize((int) (prize * player.placeTakes().getStake()));
-            System.out.println("A játékos nyereménye:  " + (int) (prize * player.placeTakes().getStake()));
+            player.recievePrize((int) (prize * placeTakes.getStake()));
+            System.out.println("A játékos nyereménye:  " + (int) (prize * placeTakes.getStake()));
         } else {
             player.recievePrize(-(placeTakes.getStake()));
             System.out.println("Nem nyert.");
