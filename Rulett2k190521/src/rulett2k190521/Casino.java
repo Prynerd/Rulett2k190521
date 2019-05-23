@@ -4,10 +4,8 @@ import Player.FullRandomPlayer;
 import Player.RandomColorPlayer;
 import Player.ShyPlayer;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -18,6 +16,8 @@ public class Casino {
     private AbstractPlayer player;
     private Board board;
     private List<BetType> possibleBets;
+    private Bet realPlayerBet;
+    
 
     public Casino() {
         this.board = new Board();
@@ -26,12 +26,9 @@ public class Casino {
     }
 
     public void game(int rounds) {
-        if (rounds < 0) {
+        for (int i = 0; i < rounds; i++) {
+            System.out.println(i + ". játék.");
             simulation();
-        } else {
-            for (int i = 0; i < rounds; i++) {
-                simulation();
-            }
         }
     }
 
@@ -48,16 +45,25 @@ public class Casino {
                 break;
         }
     }
+    
+    public void realPlayer(BetType bt, int nbr){
+        this.realPlayerBet = new Bet(bt, nbr);
+    }
 
+    //realPlayernek simulation
     private void simulation() {
         Bet placeTakes = player.placeTakes();
+        System.out.println("A játékos erre rakott: " + placeTakes.getWhere());
         int randomNumber = spin();
+        System.out.println("A nyerő szám: " + randomNumber);
         HashSet<BetType> winningBets = board.getWinningBets(randomNumber);
         if (winningBets.contains(placeTakes.getWhere())) {
             double prize = Prize.prize(placeTakes.getWhere());
             player.recievePrize((int) (prize * player.placeTakes().getStake()));
+            System.out.println("A játékos nyereménye:  " + (int) (prize * player.placeTakes().getStake()));
         } else {
             player.recievePrize(0);
+            System.out.println("Nem nyert.");
         }
     }
 
