@@ -29,7 +29,7 @@ public class Casino {
 
     public void game(int rounds) {
         for (int i = 0; i < rounds; i++) {
-            System.out.println((i+1) + ". játék.");
+            System.out.println((i+1) + ". kör:");
             if (!simulation()) {
                 break;
             }
