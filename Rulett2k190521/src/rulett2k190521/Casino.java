@@ -30,7 +30,9 @@ public class Casino {
     public void game(int rounds) {
         for (int i = 0; i < rounds; i++) {
             System.out.println(i + ". játék.");
-            simulation();
+            if (!simulation()) {
+                break;
+            }
         }
     }
     
@@ -39,16 +41,17 @@ public class Casino {
     }
 
     //realPlayernek simulation
-    public void simulation() {
+    public boolean simulation() {
+        System.out.println("A játékos beszállt " + player.money + " zsetonnal.");
         Bet placeTakes = player.placeTakes();
         if (placeTakes.getStake() == -1) {
             System.out.println("Martingél abbahagyta a játékot.");
-            return;
+            return false;
         }
         if(placeTakes.getStake() > player.money) {
             System.out.println("Nincs elegendő pénze ekkora téthez.");
             player.recievePrize(0);
-            return;
+            return false;
         }
         System.out.println("A játékos erre rakott: " + placeTakes.getWhere() + " Ennyit: " + placeTakes.getStake());
         int randomNumber = spin();
@@ -62,6 +65,7 @@ public class Casino {
             player.recievePrize(0);
             System.out.println("Nem nyert.");
         }
+        return true;
     }
 
     public void newPlayer(int playerNumber, int minBet, int maxBet, int money) {
