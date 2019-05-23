@@ -191,7 +191,7 @@ public class UserInterface {
 
     private void livePlayerGame(BetType x, int y) {
 
-        cs.getRealPlayer().setBet(x, y);
+        cs.getPlayer().setBet(new Bet(x , y));
         cs.simulation();
     }
 
